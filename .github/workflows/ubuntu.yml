@@ -1,4 +1,10 @@
 name: 'ubuntu-docker'
+
+on:
+  push:
+    branches: [ master, development, automation ]
+  pull_request:
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
