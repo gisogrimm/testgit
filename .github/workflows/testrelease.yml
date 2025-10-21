@@ -16,7 +16,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
-	  name: TEST ${{ github.ref_name }}
+	  name: 'TEST Release ${GITHUB_REF_NAME}'
 	  body_path: changes.txt
           files: |
             Release.txt

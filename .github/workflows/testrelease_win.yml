@@ -1,4 +1,4 @@
-name: Main
+name: Main Win
 
 on: push
 
@@ -11,12 +11,12 @@ jobs:
       - name: Build
         run: echo ${{ github.sha }} > WinRelease.txt
       - name: Test
-        run: cat Release.txt
+        run: cat WinRelease.txt
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
-	  name: TEST ${{ github.ref_name }}
+	  name: 'TEST Release ${GITHUB_REF_NAME}'
 	  body_path: changes.txt
           files: |
             WinRelease.txt
