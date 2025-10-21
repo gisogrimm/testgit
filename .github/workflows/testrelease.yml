@@ -18,5 +18,6 @@ jobs:
         with:
           files: |
             Release.txt
-	    LICENSE
-	    path/to/artifacts/release-artifacts
+            LICENSE
+            path/to/artifacts/release-artifacts
+
