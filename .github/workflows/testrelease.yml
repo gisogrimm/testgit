@@ -1,36 +1,22 @@
-name: Create Release
+name: Main
 
-on:
-  push:
-    tags:
-      - 'v*.*.*'  # Create release for tags matching this pattern
+on: push
 
 jobs:
-  create-release:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Login to GitHub
-        uses: actions/login@v3
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Build
+        run: echo ${{ github.sha }} > Release.txt
+      - name: Test
+        run: cat Release.txt
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create release
-        uses: actions/create-release@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-name: 'Release $GITHUB_REF_NAME'
-          release-body: 'Release notes for $GITHUB_REF_NAME'
-          draft: false
-          prerelease: false
-
-      - name: Attach artifacts to release
-        uses: actions/upload-release-asset@v3
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-name: 'Release $GITHUB_REF_NAME'
-          asset-path: 'path/to/artifacts'
-          asset-name: 'release-artifacts'
-          asset-content-type: 'application/octet-stream'
+          files: |
+            Release.txt
+	    LICENSE
+	    path/to/artifacts/release-artifacts
