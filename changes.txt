@@ -1,0 +1,2 @@
+- test build on win
+- set release name

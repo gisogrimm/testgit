@@ -4,12 +4,12 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Build
-        run: echo ${{ github.sha }} > Release.txt
+        run: echo ${{ github.sha }} > WinRelease.txt
       - name: Test
         run: cat Release.txt
       - name: Release
@@ -19,7 +19,7 @@ jobs:
 	  name: TEST ${{ github.ref_name }}
 	  body_path: changes.txt
           files: |
-            Release.txt
+            WinRelease.txt
             LICENSE
             path/to/artifacts/release-artifacts
 
