@@ -1,2 +1,3 @@
-- add target to print list of tags
-- add Makefile!
+- fix run also on ubuntu
+- try to avoid duplicate runs when a tag message is set
+- fix workflow to prevent release when a non-release tag is used
