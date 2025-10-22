@@ -14,7 +14,7 @@ jobs:
         run: cat WinRelease.txt
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
+        if: (github.ref_type == 'tag') && startsWith(github.ref_name, 'v')
         with:
           name: 'TEST Release ${{ github.ref_name }}'
           body_path: changes.txt
