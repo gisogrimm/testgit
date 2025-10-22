@@ -1,2 +1,2 @@
-- test build on win
-- set release name
+- add target to print list of tags
+- add Makefile!
