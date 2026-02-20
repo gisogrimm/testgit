@@ -17,3 +17,5 @@ jobs:
       run: brew uninstall cmake
     - name: getprefix
       run: brew --prefix
+    - name: showos
+      run: make showos

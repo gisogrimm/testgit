@@ -7,3 +7,8 @@ ver:
 
 changes:
 	git log --format="- %s" $(CURRENTRELEASE)..HEAD > changes.txt
+
+OSNAME := $(shell uname -s)
+
+showos:
+	echo $(OSNAME)
