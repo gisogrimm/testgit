@@ -10,5 +10,9 @@ changes:
 
 OSNAME := $(shell uname -s)
 
+ifeq ($(OSNAME),Darwin)
+BREWPREFIX := $(shell brew --prefix)
+endif
+
 showos:
-	echo $(OSNAME)
+	echo $(OSNAME) brew=$(BREWPREFIX)
