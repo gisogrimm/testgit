@@ -1,0 +1,19 @@
+name: TASCAR
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: fetchall
+      run: git fetch --unshallow --tags
+    - name: github-cmake workaround
+      run: brew uninstall cmake
+    - name: getprefix
+      run: brew --prefix
